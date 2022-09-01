@@ -10,7 +10,8 @@ To complement the business’ new database, a Tableau dashboard will be develope
 
 
 Data and Functional Requirements
-○ Describe the information that will be stored in the database while considering the relationships and constraints for the entities
+
+○  Describe the information that will be stored in the database while considering the relationships and constraints for the entities
 ○ List the functional requirements
 Develop an ER Model using LucidChart
 Construct a Relational Database Schema Diagram using LucidChart SQL DDL
