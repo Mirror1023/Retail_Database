@@ -1,0 +1,20 @@
+<!-- home.html -->
+
+{% extends 'base.html' %}
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+    <h2>This is the Home Page for The Mini-Mart!</h2>
+    <h3>Store Information:</h3>
+    {% for store in stores %}
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col">Store Name, Address, Phone Number</th>
+            </tr>
+        <p>{{ store[0] }}</p>
+        <p>{{ store[1] }}</p>
+        <p>{{ store[2] }}</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+<!-- update.html -->
+
+{% extends 'base.html' %}
+{% block title %}
+    Update Page
+{% endblock %}
+
+{% block content %}
+    <h2>This will update customer's phone number</h2>
+    <form action = '{{ "/customers/update/phh/" ~ customer_id }}' method = "POST" >
+        <input type = "tel" name = "phh" placeholder = "Enter Phone Number Here" pattern="[1-9]{1}[0-9]{9}" required />
+        <button class="btn btn-outline btn-success">Update Now</button>
+    </form>
+{% endblock %}

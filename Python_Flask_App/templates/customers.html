@@ -1,0 +1,33 @@
+<!-- customers.html -->
+
+{% extends 'base.html' %}
+{% block title %}
+   Customer Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col">Customer Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for customer in customers %}
+                <tr>
+                    <form action = '{{ "/customers/update/" ~ customer[0] }}' >
+                        <td>{{ customer[1] }}</td>
+                        <td>{{ customer[3] }}</td>
+                        <td>
+                            <button class="btn btn-outline btn-success">Update Now</button>
+                        </td>
+                    </form>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
