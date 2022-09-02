@@ -1,0 +1,28 @@
+-- Function 2 --
+
+-- This function will return the items that are below the inventory threshold the user passes in --
+-- An integer is passed in the function which sets the limit for the inventory_count and the function will return which items fall below that value --
+-- The goal is to be able to inform the employee what items they might be selling out of based on current quantity levels -- 
+-- This function can also help organize the stock room as it can tell you what items we have most of as well --
+
+CREATE OR REPLACE FUNCTION min_inv_count(y int)
+	RETURNS TABLE (Item_ID int, Item_Name varchar, Inventory_Count numeric) 
+	LANGUAGE plpgsql
+AS
+$$
+BEGIN
+	RETURN QUERY
+	SELECT Item.Item_ID, Item.Item_Name, Item.Inventory_Count
+	FROM Item
+	WHERE Item.Inventory_Count <= y
+	GROUP BY Item.Item_ID
+	ORDER BY 3 DESC;
+END
+$$;
+
+-- Calling Function 2 --
+
+select min_inv_count(27)
+
+--
+

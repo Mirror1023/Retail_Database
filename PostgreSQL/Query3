@@ -1,0 +1,17 @@
+-- Query 3 -- 
+
+-- This query allows us to see the total amount of sales by each employee who is not a Manager or an Assistant Manager. --
+-- We also get the number of transactions and the average amount per transaction through a calculation. --
+-- This query will give us an idea which non-management employee completes the most transactions too. --
+
+SELECT DISTINCT(Employee_Name), SUM(Total_amount) AS Total_Amount, 
+				COUNT(Transaction_ID) AS Transaction_Count, 
+				(SUM(Total_amount)/COUNT(Transaction_ID)) AS AVG_Amount
+FROM Employee FULL OUTER JOIN Transactions ON Employee.Employee_ID = Transactions.Employee_ID
+FULL OUTER JOIN Job ON Employee.Employee_ID = Job.Employee_ID
+WHERE Job.Job_ID != '5' AND Job.Job_ID != '7'
+GROUP BY 1
+ORDER BY 2 DESC;
+
+--
+

@@ -1,0 +1,17 @@
+-- View 2 --
+
+-- A table of all the next upcoming birthdays for all the employees of the business --
+-- This view can be used by any manager to offer an employee an opportunity to use some vacation time instead of working on their birthday --
+-- This view can also help remind managers to celebrate or wish their employees birthday whether they see them --
+
+CREATE OR REPLACE VIEW Next_Employee_Birthdays AS
+SELECT Employee_Name, Employee_Birthday, Vacation_Hours
+FROM Employee
+ORDER BY Employee_Birthday DESC;
+
+-- Querying View 2 -- 
+
+select * from next_employee_birthdays;
+
+--
+

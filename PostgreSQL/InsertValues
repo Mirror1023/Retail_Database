@@ -1,0 +1,302 @@
+---- Store ----
+
+-- Insert Values --
+
+INSERT INTO Store (Store_Name, Store_Address, Store_Phone_Number, PY_Sales, YTD_Sales)
+VALUES ('The Mini-Mart', '105 Reed Street, Dover, DE 19904', '3024215555', 1000453.02, 350650.08);
+
+-- (No need to insert any more rows into this table)
+
+-- Update -- 
+
+UPDATE Store
+SET Store_Phone_Number = 3027505555;
+
+-- Delete --
+
+-- (No need to ever delete anything from the Store table) --
+
+
+---- Employee ----
+
+-- Insert Values --
+
+INSERT INTO Employee (Employee_ID, Job_ID, Employee_Name, Employee_Address, Employee_Phone_Number, 
+					  Employee_Birthday, Hire_Date, Vacation_Hours, Sick_Hours)
+VALUES ('00011', '005', 'Chris Tansey', '8175 Smith Lane, Dover, DE 19925', '3028914510', 
+	   '10/25/1973', '05/12/2015', '85', '51');
+	   
+INSERT INTO Employee (Employee_ID, Job_ID, Employee_Name, Employee_Address, Employee_Phone_Number, 
+					  Employee_Birthday, Hire_Date, Vacation_Hours, Sick_Hours)
+VALUES ('00017', '007', 'John Klomich', '216 East Landing Street, Dover, DE 19925', '3029104155', 
+	   '11/29/1975', '09/10/2017', '45', '33');
+	   
+INSERT INTO Employee (Employee_ID, Job_ID, Employee_Name, Employee_Address, Employee_Phone_Number, 
+					  Employee_Birthday, Hire_Date, Vacation_Hours, Sick_Hours)
+VALUES ('00024', '025', 'Scott Wolfram', '136 Clover Lane, Newark, DE 19999', '8569491877', 
+	   '01/09/1982', '06/19/2018', '33', '24');
+	   
+INSERT INTO Employee (Employee_ID, Job_ID, Employee_Name, Employee_Address, Employee_Phone_Number, 
+					  Employee_Birthday, Hire_Date, Vacation_Hours, Sick_Hours)
+VALUES ('00043', '104', 'Chris Kershaw', '16 Hilton Road, Newark, DE 19999', '8566481516', 
+	   '05/23/1987', '03/23/2019', '22', '18');
+
+INSERT INTO Employee (Employee_ID, Job_ID, Employee_Name, Employee_Address, Employee_Phone_Number, 
+					  Employee_Birthday, Hire_Date, Vacation_Hours, Sick_Hours)
+VALUES ('00055', '109', 'Marcia McCord', '55 Holly Lane, Newark, DE 19999', '8562823355', 
+	   '04/01/1985', '04/22/2019', '20', '14');
+	   
+INSERT INTO Employee (Employee_ID, Job_ID, Employee_Name, Employee_Address, Employee_Phone_Number, 
+					  Employee_Birthday, Hire_Date, Vacation_Hours, Sick_Hours)
+VALUES ('00067', '121', 'Jake Harris', '24 Waverly Place, Newark, DE 19999', '8567901544', 
+	   '03/11/1989', '12/03/2021', '6', '3');
+
+-- Update -- 
+
+UPDATE Employee
+SET Employee_Name = 'Marcia Parks'
+WHERE Employee_ID = 00055;
+
+-- Delete --
+
+DELETE FROM Employee
+WHERE Employee_ID = 00067
+RETURNING *;
+
+
+---- Job ----
+
+-- Insert Values --
+
+INSERT INTO Job (Job_ID, Job_Title, Employee_ID, Rate, Store_Name)
+VALUES ('005', 'Store Manager', '00011', '40.00', 'The Mini-Mart');
+
+INSERT INTO Job (Job_ID, Job_Title, Employee_ID, Rate, Store_Name)
+VALUES ('007', 'Assistant Manager', '00017', '32.00', 'The Mini-Mart');
+
+INSERT INTO Job (Job_ID, Job_Title, Employee_ID, Rate, Store_Name)
+VALUES ('025', 'Shift Supervisor', '00024', '22.00', 'The Mini-Mart');
+
+INSERT INTO Job (Job_ID, Job_Title, Employee_ID, Rate, Store_Name)
+VALUES ('104', 'Cashier', '00043', '13.00', 'The Mini-Mart');
+
+INSERT INTO Job (Job_ID, Job_Title, Employee_ID, Rate, Store_Name)
+VALUES ('109', 'Cashier', '00055', '11.00', 'The Mini-Mart');
+
+INSERT INTO Job (Job_ID, Job_Title, Employee_ID, Rate, Store_Name)
+VALUES ('210', 'Custodian', '00101', '9.00', 'The Mini-Mart');
+
+-- Update -- 
+
+UPDATE Job 
+SET Rate = 12.00
+WHERE Job_ID = 109;
+
+-- Delete --
+
+DELETE FROM Job
+WHERE Job_ID = 210
+RETURNING *;
+
+
+---- Vendor ---- 
+
+-- Insert Values --
+
+INSERT INTO Vendor (Vendor_ID, Vendor_Name, Vendor_Address, Vendor_Phone_Number, Vendor_Since)
+VALUES ('770001', 'Ticonderoga', '15 Pencil Lane, Los Angeles, CA 90034', '3108956644', '01-01-2018');
+
+INSERT INTO Vendor (Vendor_ID, Vendor_Name, Vendor_Address, Vendor_Phone_Number, Vendor_Since)
+VALUES ('770222', 'Nestle', '4 Candy Drive, Boston, MA 02134', '8578953377', '01-01-2018');
+
+INSERT INTO Vendor (Vendor_ID, Vendor_Name, Vendor_Address, Vendor_Phone_Number, Vendor_Since)
+VALUES ('770002', 'Campbells', '100 Soup Avenue, Trenton, NJ 08534', '6098951122', '01-01-2018');
+
+INSERT INTO Vendor (Vendor_ID, Vendor_Name, Vendor_Address, Vendor_Phone_Number, Vendor_Since)
+VALUES ('779999', 'Tobacco House', '77 Smoke Circle, Newark, NJ 08134', '6098959988', '01-01-2018');
+
+INSERT INTO Vendor (Vendor_ID, Vendor_Name, Vendor_Address, Vendor_Phone_Number, Vendor_Since)
+VALUES ('770003', 'Hersheys', '22 Chocolate Avenue, Hershey Park, PA 07033', '7178950055', '01-01-2018');
+
+-- Update --
+
+UPDATE Vendor 
+SET Vendor_Address = '500 Tasty Avenue, Trenton, NJ 08533'
+WHERE Vendor_ID = 770002;
+
+-- Delete --
+
+-- (No need to ever delete anything from the Vendor table) --
+
+
+---- Item ---- 
+
+-- Insert Values --
+
+INSERT INTO Item (Item_ID, Item_Name, Inventory_Count, Sold_Count, Item_Description, Retail_Price, Vendor_Price, Vendor_ID)
+VALUES ('335789', 'Ticonderoga Pencils', '20', '10', '10-Pack Ticonderoga #2 Pencils with Eraser', 2.99, 1.49, '770001');
+
+INSERT INTO Item (Item_ID, Item_Name, Inventory_Count, Sold_Count, Item_Description, Retail_Price, Vendor_Price, Vendor_ID)
+VALUES ('114169', 'Crunch Bar', '30', '15', '2.5 oz Nestle Milk Chocolate Crunch Bar', 1.49, 0.75, '770222');
+
+INSERT INTO Item (Item_ID, Item_Name, Inventory_Count, Sold_Count, Item_Description, Retail_Price, Vendor_Price, Vendor_ID)
+VALUES ('116185', 'Chicken Noodle Soup', '40', '20', '12 oz Campbells Chicken Noodle Soup', 2.49, 1.45, '770002');
+
+INSERT INTO Item (Item_ID, Item_Name, Inventory_Count, Sold_Count, Item_Description, Retail_Price, Vendor_Price, Vendor_ID)
+VALUES ('116198', 'Vegetable Medley Soup', '50', '25', '12 oz Campbells Vegetable Medley Soup', 2.49, 1.45, '770002');
+
+INSERT INTO Item (Item_ID, Item_Name, Inventory_Count, Sold_Count, Item_Description, Retail_Price, Vendor_Price, Vendor_ID)
+VALUES ('335744', 'Bic Ball Point Pen', '22', '11', '2-Pack Black Bic Ball Point Pen with Clip', 2.99, 1.49, '770001');
+
+INSERT INTO Item (Item_ID, Item_Name, Inventory_Count, Sold_Count, Item_Description, Retail_Price, Vendor_Price, Vendor_ID)
+VALUES ('995599', 'Fresh Cigar', '5', '0', '1-Pack Fresh Tobacco Cigar', 5.99, 2.79, '779999');
+
+INSERT INTO Item (Item_ID, Item_Name, Inventory_Count, Sold_Count, Item_Description, Retail_Price, Vendor_Price, Vendor_ID)
+VALUES ('335755', 'Bic White Out Marker', '0', '8', 'One Bic White Out Marker', 2.99, 1.49, '770001');
+
+-- Update --
+
+UPDATE Item 
+SET Retail_Price = 1.99, Vendor_Price = 0.99
+WHERE Item_ID = 335744;
+
+-- Delete --
+
+-- (No need to ever delete anything from the Vendor table) --
+
+
+---- Customer ---- 
+
+-- Insert Values --
+
+INSERT INTO Customer (Customer_ID, Customer_Name, Customer_Address, Customer_Phone_Number, 
+					  Customer_Birthday, Customer_Since, Transaction_Count, Customer_Total_Spend)
+VALUES ('3311001', 'Harold Jackson', '4185 Moffett Lane, Dover, DE 19904', '8568880055', 
+		'02-01-1982', '01-02-2018', '136', 1031.96);
+
+INSERT INTO Customer (Customer_ID, Customer_Name, Customer_Address, Customer_Phone_Number, 
+					  Customer_Birthday, Customer_Since, Transaction_Count, Customer_Total_Spend)
+VALUES ('3311002', 'Donny Flapper', '4198 Moffett Lane, Dover, DE 19904', '8568883300', 
+		'04-11-1973', '01-03-2018', '78', 602.33);
+
+INSERT INTO Customer (Customer_ID, Customer_Name, Customer_Address, Customer_Phone_Number, 
+					  Customer_Birthday, Customer_Since, Transaction_Count, Customer_Total_Spend)
+VALUES ('3311003', 'Melissa Horton', '222 Deerborn Drive, Dover, DE 19904', '8563212200', 
+		'06-18-1992', '01-03-2018', '99', 1604.34);
+
+INSERT INTO Customer (Customer_ID, Customer_Name, Customer_Address, Customer_Phone_Number, 
+					  Customer_Birthday, Customer_Since, Transaction_Count, Customer_Total_Spend)
+VALUES ('3311004', 'Sarah Johnson', '481 Blunder Blvd, Dover, DE 19906', '8569876254', 
+		'08-22-1979', '01-05-2018', '68', 536.44);
+
+INSERT INTO Customer (Customer_ID, Customer_Name, Customer_Address, Customer_Phone_Number, 
+					  Customer_Birthday, Customer_Since, Transaction_Count, Customer_Total_Spend)
+VALUES ('3311005', 'Christina Maxwell', '6980 Power Circle, Dover, DE 19907', '8569874477', 
+		'09-12-1998', '01-06-2018', '155', 1596.44);
+		
+INSERT INTO Customer (Customer_ID, Customer_Name, Customer_Address, Customer_Phone_Number, 
+					  Customer_Birthday, Customer_Since, Transaction_Count, Customer_Total_Spend)
+VALUES ('0000001', 'No Membership', 'No Address', '0000000000', 
+		'01-01-2018', '01-01-2018', '15348', 150599.99);
+
+-- Update --
+
+UPDATE Customer 
+SET Customer_Address = '555 Baker Avenue, Dover, DE 19908'
+WHERE Customer_ID = 3311005;
+
+-- Delete --
+
+-- (No need to ever delete anything from the Customer table, 
+-- but this specific customer requested to have all of their info removed from our database) --
+
+DELETE FROM Customer
+WHERE Customer_ID = 3311004
+RETURNING *;
+
+
+---- Transactions ----
+
+-- Insert Values --
+
+INSERT INTO Transactions (Transaction_ID, Store_Name, Transaction_Date, Transaction_Time, 
+					  Employee_ID, Customer_ID, Item_Count, Item_ID, Total_Amount)
+VALUES ('999000100', 'The Mini-Mart', '01-02-2018', '12:34PM', '00011', '0000001', '1', '335789', 2.99);
+
+INSERT INTO Transactions (Transaction_ID, Store_Name, Transaction_Date, Transaction_Time, 
+					  Employee_ID, Customer_ID, Item_Count, Item_ID, Total_Amount)
+VALUES ('999000138', 'The Mini-Mart', '01-04-2018', '2:34PM', '00011', '0000001', '1', '114169', 1.49);
+
+INSERT INTO Transactions (Transaction_ID, Store_Name, Transaction_Date, Transaction_Time, 
+					  Employee_ID, Customer_ID, Item_Count, Item_ID, Total_Amount)
+VALUES ('999000148', 'The Mini-Mart', '01-05-2018', '11:34AM', '00017', '0000001', '1', '116185', 2.49);
+
+INSERT INTO Transactions (Transaction_ID, Store_Name, Transaction_Date, Transaction_Time, 
+					  Employee_ID, Customer_ID, Item_Count, Item_ID, Total_Amount)
+VALUES ('999000172', 'The Mini-Mart', '01-06-2018', '4:39PM', '00017', '0000001', '2', '116198', 4.98);
+
+INSERT INTO Transactions (Transaction_ID, Store_Name, Transaction_Date, Transaction_Time, 
+					  Employee_ID, Customer_ID, Item_Count, Item_ID, Total_Amount)
+VALUES ('999000199', 'The Mini-Mart', '01-07-2018', '3:15PM', '00024', '0000001', '1', '335744', 2.99);
+
+-- Update -- 
+
+UPDATE Transactions 
+SET Transaction_Time = '5:57PM'
+WHERE Transaction_ID = 999000199;
+
+-- Delete -- 
+
+-- (No need to ever delete anything from the Transactions table. Refunds should be an alternative solution) --
+
+
+---- Feedback ----
+
+-- Insert Values --
+
+INSERT INTO Feedback (Survey_ID, Store_Name, Survey_Type, Customer_Comment, Employee_ID, 
+						Customer_ID, Transaction_ID, Survey_Date, Status)
+VALUES ('440001', 'The Mini-Mart', 'Positive', 'Friendly Staff!', '00011', 
+		'3311001', '999000100', '01-05-2018', 'Acknowledged');
+
+INSERT INTO Feedback (Survey_ID, Store_Name, Survey_Type, Customer_Comment, Employee_ID, 
+						Customer_ID, Transaction_ID, Survey_Date, Status)
+VALUES ('440002', 'The Mini-Mart', 'Negative', 'Wait time was too long...', '00011', 
+		'3311002', '999000138', '01-09-2018', 'Acknowledged');
+		
+INSERT INTO Feedback (Survey_ID, Store_Name, Survey_Type, Customer_Comment, Employee_ID, 
+						Customer_ID, Transaction_ID, Survey_Date, Status)
+VALUES ('440003', 'The Mini-Mart', 'Negative', 'Rude attitude!', '00017', 
+		'3311003', '999000148', '01-11-2018', 'Pending');
+		
+INSERT INTO Feedback (Survey_ID, Store_Name, Survey_Type, Customer_Comment, Employee_ID, 
+						Customer_ID, Transaction_ID, Survey_Date, Status)
+VALUES ('440004', 'The Mini-Mart', 'Positive', 'Very helpful!', '00017', 
+		'3311001', '999000172', '01-13-2018', 'Acknowledged');
+
+INSERT INTO Feedback (Survey_ID, Store_Name, Survey_Type, Customer_Comment, Employee_ID, 
+						Customer_ID, Transaction_ID, Survey_Date, Status)
+VALUES ('4400015', 'The Mini-Mart', 'Positive', 'Nice and helpful!', '00024', 
+		'3311005', '999000199', '01-16-2018', 'Acknowledged');
+
+-- Update --
+
+UPDATE Feedback 
+SET Status = 'Training'
+WHERE Survey_ID = 440003;
+
+-- Delete --
+
+-- (No need to ever delete anything from the Feedback table) --
+
+
+
+
+
+
+
+
+
+
+
+

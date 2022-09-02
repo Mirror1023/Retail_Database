@@ -1,0 +1,13 @@
+-- Query 2 -- 
+
+-- This query provides specfic transactional data grouped by the transaction_id and --
+-- orderded by the date and time the transaction took place. --
+-- This table also gives us an idea on how many items were sold in each transaction along with the total cost. --
+
+SELECT transaction_id, COUNT(item_id) AS item_amount, total_amount, transaction_date, transaction_time
+FROM Transactions 
+GROUP BY transaction_id
+ORDER BY transaction_date, transaction_time;
+
+--
+

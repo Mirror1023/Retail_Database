@@ -1,0 +1,16 @@
+-- Query 6 -- 
+
+-- The previous system did not provide the customer an opportunity to give feedback, but the new system does --
+-- This query has a nested subquery inside of it. --
+-- This query counts the amount of surveys each customer has submitted ordered by the amount of surveys left. --
+
+SELECT customer_id, customer_name, 
+	(SELECT count (*) 
+	 FROM Feedback WHERE feedback.customer_id = customer.customer_id)
+	 AS survey_amount
+FROM Customer
+GROUP BY customer_id
+ORDER BY survey_amount DESC;
+
+--
+

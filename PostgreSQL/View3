@@ -1,0 +1,17 @@
+-- View 3 --
+
+-- A view of all the transactional records performed by the employees --
+-- This view will assist in running queries and locating specific transactions historically --
+
+CREATE OR REPLACE VIEW employee_sales AS
+SELECT Transactions.store_name, transaction_date, transaction_time, employee.employee_id, 
+customer_id, item_count, item_id, total_amount, job_id, employee_name
+FROM Transactions INNER JOIN Employee ON Transactions.employee_id = Employee.employee_id
+INNER JOIN Store ON Transactions.store_name = Store.store_name;
+
+-- Querying View 3 -- 
+
+select * from employee_sales;
+
+--
+

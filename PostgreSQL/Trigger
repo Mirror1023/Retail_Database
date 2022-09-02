@@ -1,0 +1,43 @@
+-- Trigger -- 
+
+-- When an employee is hired by the business and their information is inserted into the database, --
+-- a job_id is automatically generated for them because of this trigger --
+-- The job table tracks all financial information related to the employees whereas the employee table tracks all personal employee information --
+
+CREATE OR REPLACE FUNCTION add_employee_trigger_func()
+	RETURNS TRIGGER 
+	LANGUAGE plpgsql
+AS
+$$
+BEGIN
+
+    INSERT INTO Job (job_id, job_title, employee_id, rate, store_name)
+    VALUES(NEW.job_id, NULL, NEW.employee_id, NULL, NULL);
+		 
+RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER add_employee_trigger
+
+	AFTER INSERT
+	ON Employee
+	FOR EACH ROW
+	EXECUTE PROCEDURE add_employee_trigger_func();
+	
+	
+-- Using the Trigger --
+
+INSERT INTO Employee (Employee_ID, Job_ID, Employee_Name, Employee_Address, Employee_Phone_Number, 
+					  Employee_Birthday, Hire_Date, Vacation_Hours, Sick_Hours)
+VALUES (68, 141, 'Jim Biglin', '24 Waverly Place, Newark, DE 19999', '8567903344', 
+	   '03/22/1989', '10/03/2021', 6, 3);
+	   
+--
+
+UPDATE Job 
+SET Job_title = 'Cashier', Rate = 11.50, Store_name = 'The Mini-Mart'
+WHERE Job_ID = 141;
+
+--
+

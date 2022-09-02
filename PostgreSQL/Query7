@@ -1,0 +1,16 @@
+-- Query 7 --
+
+-- This query uses the EXCEPT operator. -- 
+-- This will find all the customers of the store who have not left feedback. --
+-- The first select statment finds all the unique customer_ids and customer_names, --
+-- while the second select statment finds all the customers who have submitted feedback. --
+-- However, the EXCEPT operator excludes everyone in the second select statement. -- 
+
+SELECT DISTINCT customer_id, customer_name, customer_since, transaction_count
+FROM Customer
+EXCEPT
+SELECT DISTINCT Customer.customer_id, customer.customer_name, customer_since, transaction_count
+FROM Feedback INNER JOIN Customer ON Customer.customer_id = Feedback.customer_id;
+	
+--
+

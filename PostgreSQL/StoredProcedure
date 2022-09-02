@@ -1,0 +1,23 @@
+-- Stored Procedure --
+
+-- This stored procedure inserts a new customer into the customer table --
+-- The customer will provide us with four pieces of their information: Name, Address, Phone Number, and Date of Birth --
+-- Since customer_id is a serial datatype, a new customer_id will be generated to maintain referential integrity -- 
+
+DROP PROCEDURE IF EXISTS sp_add_customer;
+CREATE PROCEDURE sp_add_customer (x VARCHAR(50), y VARCHAR(60), z VARCHAR(10), n DATE)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+INSERT INTO Customer (customer_name, customer_address, customer_phone_number,
+						customer_birthday, customer_since, transaction_count, customer_total_spend)
+  VALUES (x, y, z, n, current_date, 0, 0);
+END
+$$;
+
+-- Calling the stored procedure -- 
+
+CALL sp_add_customer ('Hakeem Amir', '111 James Street, Los Angeles, CA 90034', '6098553459', '10-23-1987');
+
+--
+

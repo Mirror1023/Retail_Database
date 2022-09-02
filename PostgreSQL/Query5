@@ -1,0 +1,13 @@
+-- Query 5 --
+
+-- This query will tell us how many items were sold by each employee on each day. --
+-- The table is organized by the employee who has sold the most items. --
+-- Since this is a new system for the business, the previous method (MS Excel) did not track items sold --
+
+select ee.employee_name, sum(item_count) as Items_Sold, transaction_date
+from transactions as tt inner join employee as ee on tt.employee_id = ee.employee_id
+group by transaction_date, employee_name
+order by 2 desc;
+
+--
+

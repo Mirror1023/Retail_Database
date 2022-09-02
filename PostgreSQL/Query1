@@ -1,0 +1,15 @@
+-- Query 1 -- 
+
+-- This query provides information regarding every employee of the business. --
+-- Along with their name and employee ID, we obtain their job title, rate, vacation hours and more. --
+-- The results are ordered from lowest to highest rates. --
+-- This gives us an idea on which employees have the most available paid time off as well. --
+
+SELECT e.employee_name, e.employee_id, j.job_title, j.job_id, 
+		j.rate, e.hire_date, e.vacation_hours, e.sick_hours
+FROM Employee AS e 
+INNER JOIN Job AS j ON e.employee_id = j.employee_id
+ORDER BY rate;
+
+--
+

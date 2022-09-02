@@ -1,0 +1,13 @@
+-- Query 8 --
+
+-- This query uses the LIKE operator to identify all the customers located in the city of Dover. --
+-- This query also uses the DISTINCT statement to locate unqiue customers only. --
+
+
+SELECT DISTINCT customer_name, customer.customer_id, customer_address, customer_birthday, 
+				customer_since, transaction_count, customer_total_spend
+FROM customer FULL OUTER JOIN transactions ON customer.customer_id = transactions.customer_id
+WHERE customer_address LIKE 'Dover%' OR customer_address LIKE '% Dover%';
+
+--
+

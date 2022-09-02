@@ -1,0 +1,18 @@
+-- View 1 --
+
+-- A table of all the items that the business has an inventory_count of zero for --
+-- This view will list those items along with the corresponding vendor to contact so we can order more of that item --
+-- This view should be used by any employee who is authorized to order more inventory --
+
+CREATE OR REPLACE VIEW out_of_stock_order AS
+SELECT Item_ID, Item_Name, Item.Vendor_ID, Vendor_Name, Vendor_Phone_Number, Vendor_Address, Inventory_Count
+FROM Item INNER JOIN Vendor ON Item.Vendor_ID = Vendor.Vendor_ID
+WHERE Inventory_Count = 0
+ORDER BY 3;
+
+-- Querying View 1 -- 
+
+select * from out_of_stock_order;
+
+--
+

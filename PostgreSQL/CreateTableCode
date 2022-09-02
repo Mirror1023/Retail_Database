@@ -1,0 +1,119 @@
+---- Table Creation ---- 
+
+CREATE TABLE Vendor (
+  Vendor_ID serial UNIQUE,
+  Vendor_Name varchar(50),
+  Vendor_Address varchar(60),
+  Vendor_Phone_Number varchar(10),
+  Vendor_Since date,
+  PRIMARY KEY (Vendor_ID)
+);
+
+CREATE TABLE Store (
+  Store_Name varchar(50) NOT NULL UNIQUE,
+  Store_Address varchar(60),
+  Store_Phone_Number varchar(10),
+  PY_Sales numeric,
+  YTD_Sales numeric,
+  PRIMARY KEY (Store_Name)
+);
+
+CREATE TABLE Employee (
+  Employee_ID serial UNIQUE,
+  Job_ID serial NOT NULL,
+  Employee_Name varchar(50),
+  Employee_Address varchar(60),
+  Employee_Phone_Number varchar(10),
+  Employee_Birthday date,
+  Hire_Date date,
+  Vacation_Hours int NOT NULL,
+  Sick_Hours int NOT NULL,
+  PRIMARY KEY (Employee_ID)
+);
+
+CREATE TABLE Transactions (
+  Transaction_ID serial UNIQUE,
+  Store_Name varchar(50),
+  Transaction_Date date,
+  Transaction_Time time,
+  Employee_ID serial NOT NULL,
+  Customer_ID serial NOT NULL,
+  Item_Count int NOT NULL,
+  Item_ID serial NOT NULL,
+  Total_Amount numeric,
+  PRIMARY KEY (Transaction_ID),
+  CONSTRAINT FK_Transactions_Employee_ID
+    FOREIGN KEY (Employee_ID)
+      REFERENCES Employee(Employee_ID),
+  CONSTRAINT FK_Transactions_Store_Name
+    FOREIGN KEY (Store_Name)
+      REFERENCES Store(Store_Name)
+);
+
+CREATE TABLE Customer (
+  Customer_ID serial UNIQUE,
+  Customer_Name varchar(50),
+  Customer_Address varchar(60),
+  Customer_Phone_Number varchar(10),
+  Customer_Birthday date,
+  Customer_Since date,
+  Transaction_Count numeric,
+  Customer_Total_Spend numeric,
+  PRIMARY KEY (Customer_ID)
+);
+
+CREATE TABLE Feedback (
+  Survey_ID serial UNIQUE,
+  Store_Name varchar(50),
+  Survey_Type varchar(20),
+  Customer_Comment varchar(200),
+  Employee_ID serial NOT NULL,
+  Customer_ID serial NOT NULL,
+  Transaction_ID serial NOT NULL,
+  Survey_Date date,
+  Status varchar(50),
+  PRIMARY KEY (Survey_ID),
+  CONSTRAINT FK_Feedback_Store_Name
+    FOREIGN KEY (Store_Name)
+      REFERENCES Store(Store_Name),
+  CONSTRAINT FK_Feedback_Employee_ID
+    FOREIGN KEY (Employee_ID)
+      REFERENCES Employee(Employee_ID),
+  CONSTRAINT FK_Feedback_Transaction_ID
+    FOREIGN KEY (Transaction_ID)
+      REFERENCES Transactions(Transaction_ID)
+);
+
+CREATE TABLE Job (
+  Job_ID serial UNIQUE,
+  Job_Title varchar(60),
+  Employee_ID serial NOT NULL,
+  Rate numeric,
+  Store_Name varchar(50),
+  PRIMARY KEY (Job_ID),
+  CONSTRAINT FK_Job_Store_Name
+    FOREIGN KEY (Store_Name)
+      REFERENCES Store(Store_Name)
+);
+
+CREATE TABLE Item (
+  Item_ID serial UNIQUE,
+  Item_Name varchar(50),
+  Inventory_Count numeric,
+  Sold_Count numeric,
+  Item_Description varchar(288),
+  Retail_Price numeric,
+  Vendor_Price numeric,
+  Vendor_ID serial NOT NULL,
+  PRIMARY KEY (Item_ID),
+  CONSTRAINT FK_Item_Item_ID
+    FOREIGN KEY (Vendor_ID)
+      REFERENCES Vendor(Vendor_ID)
+);
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+-- Function 1 --
+
+-- This function will find the employee who had the most sales on any given day --
+-- A date is to be passed in as a parameter to this function -- 
+
+CREATE OR REPLACE FUNCTION most_sales_day(x date)
+	RETURNS TABLE (Total_Sales numeric, Employee_Name varchar) 
+	LANGUAGE plpgsql
+AS
+$$
+BEGIN
+	RETURN QUERY
+	SELECT SUM(Total_Amount) AS Total_Sales, Employee.Employee_Name
+	FROM Transactions
+	INNER JOIN Employee ON Transactions.Employee_ID = Employee.Employee_ID
+	WHERE Transaction_Date = x
+	GROUP BY Employee.Employee_Name
+	ORDER BY 1 DESC
+	LIMIT 1;
+END
+$$;
+
+-- Calling Function 1 --
+
+select most_sales_day('03-30-2020');
+
+--
+
