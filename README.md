@@ -9,11 +9,12 @@ Databases in general have a lot of benefits to any organization. Through Postgre
 To complement the business’ new database, a Tableau dashboard will be developed so stakeholders can quickly access relevant metrics that will help them support the business further. With the implementation of these new tools and resources, The Mini-Mart will be able to better serve their customers and generate more profits moving forward.
 
 
-Data and Functional Requirements
 
-○ Describe the information that will be stored in the database while considering the relationships and constraints for the entities
+# Data and Functional Requirements
 
-○ List the functional requirements
+Describe the information that will be stored in the database while considering the relationships and constraints for the entities
+
+List the functional requirements
 
 Develop an ER Model using LucidChart
 
@@ -26,21 +27,30 @@ Construct a Relational Database Schema Diagram using LucidChart SQL DDL
 - Create two general SQL functions and describe its purpose
 - Create one trigger and describe its purpose
 - Create one stored procedure and describe its purpose and function
+
 SQL DML
+
 ○ For each table, provide the following:
 - Five insert statements
 - One update statement
 - One delete statement
 - Consider referential integrity constraints for all statements Construct eight SQL queries
+
 ○ For each query, state the query in plain english along with the business relevance
+
 Develop a web application in Python using the Flask framework to interact with the database
+
 ○ The code will connect to the database and will perform the following actions:
 - Read some data from the database and display it to the user
 - Change some data in the database by updating or deleting record(s)
+
 Create a Tableau dashboard that displays relevant analytics to measure the business’ performance and that helps make informed decisions
+
 ○ Connect the database to the Tableau workbook
 ○ Develop an easy-to-consume dashboard displaying relevant business metrics
+
 Record a video presentation walking through the entire project and its requirements
+
 ○ Video will be recorded in Zoom and uploaded to the Brightspace Media Gallery
-The entire project will be submitted in a single document using the Project Submission Template as a guide. The code provided in the document will be able to be copy and pasted for testing and evaluation purposes.
+
 The main goal of this project is to create a working postgres database that will manage the business efficiently and effectively. It will provide stakeholders with relevant information of the performance of the business while also identifying needs of the convenience store.
